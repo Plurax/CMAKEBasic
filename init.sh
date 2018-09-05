@@ -26,7 +26,6 @@ cd $HERE
 echo "Renaming PROJECTNAME to $PROJECT_NAME"
 find . -type f -exec sed -i "s/PROJECTNAME/$PROJECT_NAME/g" {} +
 
-mv "PROJECTNAME.doxyfile" "$PROJECT_NAME.doxyfile"
 mv "include/PROJECTNAME" "include/$PROJECT_NAME"
 mv "include/$PROJECT_NAME/PROJECTNAMEVersion.h.in" "include/${PROJECT_NAME}/${PROJECT_NAME}Version.h.in"
 

@@ -1,12 +1,13 @@
 option(PROJECTNAME_Valgrind "Execute test suite with Valgrind" OFF)
 option(PROJECTNAME_Coverage "Build test suite with coverage information" OFF)
 
-ADD_DEFINITIONS(-DBOOST_ALL_DYN_LINK)
+# Test binaries should not come into the bin folder...
+unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 
 add_library(catch_main OBJECT
     "src/unit.cpp"
 )
-target_compile_features(catch_main PUBLIC cxx_std_11)
+target_compile_features(catch_main PUBLIC cxx_std_17)
 target_include_directories(catch_main PRIVATE "thirdparty/catch")
 
 
@@ -32,7 +33,6 @@ if(PROJECTNAME_Coverage)
     add_custom_target(lcov_html
         COMMAND lcov --directory .. --capture --output-file json.info --gcov-tool ${GCOV_BIN} --rc lcov_branch_coverage=1
         COMMAND lcov -e json.info ${SOURCE_FILES} --output-file json.info.filtered --rc lcov_branch_coverage=1
-#        COMMAND ${CMAKE_SOURCE_DIR}/test/thirdparty/imapdl/filterbr.py json.info.filtered > json.info.filtered.noexcept
         COMMAND genhtml --title "PROJECTNAME" --legend --demangle-cpp --output-directory html --show-details --branch-coverage json.info.filtered
         COMMENT "Generating HTML report test/html/index.html"
     )
@@ -51,16 +51,11 @@ foreach(file ${files})
     )
 
     target_compile_definitions(${testcase} PRIVATE CATCH_CONFIG_FAST_COMPILE)
-    target_compile_features(${testcase} PRIVATE cxx_std_11)
+    target_compile_features(${testcase} PRIVATE cxx_std_17)
     target_include_directories(${testcase} PRIVATE "thirdparty/catch")
     target_include_directories(${testcase} PRIVATE ${PROJECTNAME_INCLUDE_BUILD_DIR})
-    target_include_directories(${testcase} PRIVATE ${Boost_INCLUDE_DIRS})
 
-    target_link_libraries(${testcase} ${PROJECTNAME_TARGET_NAME} boost_filesystem boost_system boost_log_setup boost_log)
-
-    set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
-#    find_package(Boost COMPONENTS log_setup log program_options REQUIRED)
-    add_definitions(${Boost_LIB_DIAGNOSTIC_DEFINITIONS})
+    target_link_libraries(${testcase} ${PROJECTNAME_TARGET_NAME})
 
     if(NOT MSVC)
         set_target_properties(${testcase} PROPERTIES COMPILE_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated -Wno-float-equal")

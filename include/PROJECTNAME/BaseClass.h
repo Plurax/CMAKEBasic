@@ -3,6 +3,7 @@
 
 class BaseClass
 {
+ public:
   int one();
   void print();
 };

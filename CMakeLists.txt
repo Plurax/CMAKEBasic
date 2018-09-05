@@ -6,15 +6,13 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 # Setting up project
 project(PROJECTNAME)
 
-ADD_DEFINITIONS(-DBOOST_ALL_DYN_LINK)
-
 # Output dirs
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
-set(CHUHLICH_PROJECTNAME_INCLUDE_BUILD_DIR "${PROJECT_SOURCE_DIR}/include/")
-set(CHUHLICH_PROJECTNAME_SRC_BUILD_DIR "${PROJECT_SOURCE_DIR}/src/")
+set(PROJECTNAME_INCLUDE_BUILD_DIR "${PROJECT_SOURCE_DIR}/include/")
+set(PROJECTNAME_SRC_BUILD_DIR "${PROJECT_SOURCE_DIR}/src/")
 
 # add a target to generate API documentation with Doxygen
 find_package(Doxygen)
@@ -27,7 +25,7 @@ if(DOXYGEN_FOUND)
         )
 endif(DOXYGEN_FOUND)
 
-set(CHUHLICH_PROJECTNAME_TARGET_NAME               ${PROJECT_NAME})
+set(PROJECTNAME_TARGET_NAME               ${PROJECT_NAME})
 
 # The version number.
 # Set the version number of your project here (format is MAJOR.MINOR.PATCHLEVEL - e.g. 1.0.0)
@@ -61,20 +59,13 @@ if(GIT_FOUND)
     set (VCS_REVISION ${GIT_SHA1})
 endif()
 
-# This line finds the boost lib and headers.
-set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
-find_package(Boost COMPONENTS log_setup REQUIRED)
-add_definitions(${Boost_LIB_DIAGNOSTIC_DEFINITIONS})
-
 # This sets the include directory for the reference project. This is the -I flag in gcc.
 # All the includes should be in this variable To add new directories to the include path,
 # just add them in this list (after a space), or add an include_directories statement in a
 # subdirectory's CMakeLists.
 include_directories(
     ${PROJECT_SOURCE_DIR}/include
-    ${PROJECT_SOURCE_DIR}/ext/json/include
     ${PROJECT_BINARY_DIR}/include   # add the binary tree to the search path so that we will find Version.h
-    ${Boost_INCLUDE_DIRS}
 )
 
 

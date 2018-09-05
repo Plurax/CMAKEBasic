@@ -18,6 +18,7 @@ echo "Delete .git - you need to create a new repo..."
 rm -rf .git
 
 echo "Installing catch..."
+mkdir -p $HERE/test/thirdparty/catch
 cd $HERE/test/thirdparty/catch
 wget https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp
 cd $HERE

@@ -25,7 +25,7 @@ if(PROJECTNAME_Coverage)
     find_program(GCOV_BIN NAMES gcov-${GCC_VERSION} gcov HINTS ${COMPILER_PATH})
 
     # collect all source files from the chosen include dir
-    file(GLOB_RECURSE SOURCE_FILES ${CHUHLICH_PROJECTNAME_INCLUDE_BUILD_DIR}*.h ${CHUHLICH_PROJECTNAME_SRC_BUILD_DIR}*.cpp)
+    file(GLOB_RECURSE SOURCE_FILES ${PROJECTNAME_INCLUDE_BUILD_DIR}*.h ${PROJECTNAME_SRC_BUILD_DIR}*.cpp)
 
     # add target to collect coverage information and generate HTML file
     # (filter script from https://stackoverflow.com/a/43726240/266378)
@@ -53,10 +53,10 @@ foreach(file ${files})
     target_compile_definitions(${testcase} PRIVATE CATCH_CONFIG_FAST_COMPILE)
     target_compile_features(${testcase} PRIVATE cxx_std_11)
     target_include_directories(${testcase} PRIVATE "thirdparty/catch")
-    target_include_directories(${testcase} PRIVATE ${CHUHLICH_PROJECTNAME_INCLUDE_BUILD_DIR})
+    target_include_directories(${testcase} PRIVATE ${PROJECTNAME_INCLUDE_BUILD_DIR})
     target_include_directories(${testcase} PRIVATE ${Boost_INCLUDE_DIRS})
 
-    target_link_libraries(${testcase} ${CHUHLICH_PROJECTNAME_TARGET_NAME} boost_filesystem boost_system boost_log_setup boost_log)
+    target_link_libraries(${testcase} ${PROJECTNAME_TARGET_NAME} boost_filesystem boost_system boost_log_setup boost_log)
 
     set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
 #    find_package(Boost COMPONENTS log_setup log program_options REQUIRED)

@@ -23,7 +23,7 @@ set(APP_SOURCES
 )
 
 # Define two variables in order not to repeat ourselves.
-set(LIBRARY_NAME PROJECTNAMElib)
+set(LIBRARY_NAME PROJECTNAME)
 
 # Define the library
 add_library(${LIBRARY_NAME} SHARED ${LIB_SOURCES})

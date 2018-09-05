@@ -1,7 +1,7 @@
 # PROJECTNAME
 This is my brandnew project
 
-# Procect description and aim
+# Project description and aim
 
 This C++ project can be used as basic jumpstart for your own development tasks. It contains a basic
 CMake setup supporting out of source builds. There are no library dependencies included, but you will
@@ -76,20 +76,24 @@ tests will have access to the binaries.
 
 ## Tests
 
-Tests via catch2 will create seperate executables for each unittest. The compilation is optimized by creating
-an archive of catch2 which is linked to all executables. The tests will also run valgrind to perform memchecks
-if enabled. Adding a new unit test is just creating a new cpp file like the unit-BaseClass.cpp.
+Tests are running via catch2, which is downloaded via the init.sh script.
+The CMake setup for the tests will create seperate executables for each unittest. The compilation is optimized
+by creating an archive of catch2 which is linked to all executables. The tests will also run valgrind to
+perform memchecks if enabled. Adding a new unit test is just creating a new cpp file like the
+unit-BaseClass.cpp.
 
 ## Packaging
 
+Packaging not yet imlemented/tested.
+
 # Remarks
 
-Although CMake is also for cross compiling, I dont have tested MSVC support. I am using this currently on
-Ubuntu 18.04.01
+Although CMake is also for cross compiling, I dont have tested MSVC support or other platforms. I am using
+this currently on Ubuntu 18.04.01
 
 # Thanks
 
-This project is basically a basic cookbook to be able to jumpstart a new c++ project very fast, instead of
+This project is basically a cookbook to be able to jumpstart a new c++ project very fast, instead of
 cobbling a new one together of some existing projects (Which is especially cumbersome if you want to show
 some thing to a "non C++ colleague"). It is inspired by the base project from
 [Barthélémy von Haller](https://github.com/Barthelemy), mixed with the testing part from

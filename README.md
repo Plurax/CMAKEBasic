@@ -13,7 +13,7 @@ something you wanted to try without the copy and paste mess...
 
 # Project structure and organisation
 
-CMAKEBasic
+    CMAKEBasic
     ├── cmake
     │   ├── GetGitRevisionDescription.cmake    # Retrieve version info from git
     │   ├── GetGitRevisionDescription.cmake.in # Retrieve version info from git

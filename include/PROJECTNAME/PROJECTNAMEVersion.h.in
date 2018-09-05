@@ -1,0 +1,42 @@
+#ifndef PROJECTNAME_VERSION_H
+#define PROJECTNAME_VERSION_H
+
+#include <string>
+#include <sstream>
+
+/// The current svn revision.
+#define PROJECTNAME_BRANCH "@VCS_BRANCH@"
+#define PROJECTNAME_TAG "@VCS_TAG@"
+#define PROJECTNAME_REVISION "@VCS_REVISION@"
+
+/// Information about the current PROJECTNAME version.
+class PROJECTNAMEVersion {
+public:
+  /// @return the current major version of PROJECTNAME.
+  static int getBranch()
+  {
+    return PROJECTNAME_BRANCH;
+  }
+
+  /// @return the current minor version of PROJECTNAME.
+  static int getTag()
+  {
+    return PROJECTNAME_TAG;
+  }
+
+  /// @return the current patch level of PROJECTNAME.
+  static int getRevision()
+  {
+    return PROJECTNAME_REVISION;
+  }
+
+  /// @return the current PROJECTNAME version (MM.mm.pp).
+  static std::string getString()
+  {
+    std::ostringstream version;
+    version << "Branch: " << PROJECTNAME_BRANCH << ' Tag: ' << PROJECTNAME_TAG << ' Revision: ' << PROJECTNAME_REVISION;
+    return version.str();
+  }
+};
+
+#endif // PROJECTNAME_VERSION_H

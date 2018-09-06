@@ -49,6 +49,7 @@ find_package(Git QUIET) # if we don't find git or FindGit.cmake is not on the sy
 ## The Git module will trigger a reconfiguration for each pull that will bring a new revision on the local repository
 set (VCS_REVISION "-1")
 if(GIT_FOUND)
+    if(EXISTS ${CMAKE_SOURCE_DIR}/.git)
     include(GetGitRevisionDescription)
     get_git_head_revision(GIT_REFSPEC GIT_SHA1)
     git_get_exact_tag(GIT_TAG)
@@ -59,6 +60,9 @@ if(GIT_FOUND)
     message(STATUS "GIT revision ${GIT_SHA1}")
     message(STATUS "GIT tag ${GIT_TAG}")
     set (VCS_REVISION ${GIT_SHA1})
+    else()
+         message(STATUS "No git repository.")
+    endif()
 endif()
 
 # This sets the include directory for the reference project. This is the -I flag in gcc.

@@ -65,6 +65,10 @@ if(GIT_FOUND)
     endif()
 endif()
 
+# Produce the final Version.h using template Version.h.in and substituting variables.
+# We don't want to polute our source tree with it, thus putting it in binary tree.
+configure_file("include/testproj/testprojVersion.h.in" "${CMAKE_CURRENT_BINARY_DIR}/testprojVersion.h" @ONLY)
+
 # This sets the include directory for the reference project. This is the -I flag in gcc.
 # All the includes should be in this variable To add new directories to the include path,
 # just add them in this list (after a space), or add an include_directories statement in a
@@ -75,7 +79,6 @@ include_directories(
 )
 
 
-add_subdirectory(include)
 add_subdirectory(src)
 
 

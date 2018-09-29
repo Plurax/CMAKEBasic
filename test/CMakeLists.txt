@@ -1,5 +1,5 @@
-option(PROJECTNAME_Valgrind "Execute test suite with Valgrind" OFF)
-option(PROJECTNAME_Coverage "Build test suite with coverage information" OFF)
+option(VALGRIND "Execute test suite with Valgrind" OFF)
+option(COVERAGE "Build test suite with coverage information" OFF)
 
 # Test binaries should not come into the bin folder...
 unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY)
@@ -11,7 +11,7 @@ target_compile_features(catch_main PUBLIC cxx_std_17)
 target_include_directories(catch_main PRIVATE "thirdparty/catch")
 
 
-if(PROJECTNAME_Coverage)
+if(COVERAGE)
     message(STATUS "Building test suite with coverage information")
     if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
         message(FATAL_ERROR "PROJECTNAME_Coverage requires GCC.")
@@ -73,7 +73,7 @@ foreach(file ${files})
     )
     set_tests_properties("${testcase}_all" PROPERTIES LABELS "all")
 
-    if(PROJECTNAME_Valgrind)
+    if(VALGRIND)
         add_test(NAME "${testcase}_valgrind"
           COMMAND ${memcheck_command} ${CMAKE_CURRENT_BINARY_DIR}/${testcase} ${CATCH_TEST_FILTER}
           WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}

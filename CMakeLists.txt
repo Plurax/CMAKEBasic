@@ -39,7 +39,7 @@ set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 ##
 ## OPTIONS
 ##
-option(PROJECTNAME_BuildTests "Build the unit tests when BUILD_TESTING is enabled." OFF)
+option(BUILDTESTS "Build the unit tests when BUILD_TESTING is enabled." OFF)
 
 ## Git (and its revision)
 find_package(Git QUIET) # if we don't find git or FindGit.cmake is not on the system we ignore it.
@@ -88,7 +88,7 @@ add_subdirectory(src)
 ##
 include(CTest) #adds option BUILD_TESTING (default ON)
 
-if(BUILD_TESTING AND PROJECTNAME_BuildTests)
+if(BUILD_TESTING AND BUILDTESTS)
     enable_testing()
     add_subdirectory(test)
 endif()

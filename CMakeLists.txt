@@ -67,7 +67,7 @@ endif()
 
 # Produce the final Version.h using template Version.h.in and substituting variables.
 # We don't want to polute our source tree with it, thus putting it in binary tree.
-configure_file("include/testproj/testprojVersion.h.in" "${CMAKE_CURRENT_BINARY_DIR}/testprojVersion.h" @ONLY)
+configure_file("include/PROJECTNAME/PROJECTNAMEVersion.h.in" "${CMAKE_CURRENT_BINARY_DIR}/PROJECTNAMEVersion.h" @ONLY)
 
 # This sets the include directory for the reference project. This is the -I flag in gcc.
 # All the includes should be in this variable To add new directories to the include path,

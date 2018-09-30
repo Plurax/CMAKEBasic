@@ -24,7 +24,7 @@ wget https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/cat
 cd $HERE
 
 echo "# $PROJECT_NAME" > README.md
-echo "This is my brandnew project" >> README.md
+echo "This is my brandnew project using [CMAKEBasic](https://github.com/Plurax/CMAKEBasic) template" >> README.md
 
 echo "Renaming PROJECTNAME to $PROJECT_NAME"
 find . -type f -exec sed -i "s/PROJECTNAME/$PROJECT_NAME/g" {} +

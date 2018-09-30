@@ -1,5 +1,5 @@
 # PROJECTNAME
-This is my brandnew project
+This is my brandnew project using [CMAKEBasic](https://github.com/Plurax/CMAKEBasic) template
 
 # Project description and aim
 
@@ -27,7 +27,7 @@ something you wanted to try without the copy and paste mess...
     │       ├── CMakeLists.txt                 # Basicly just doing the version replace
     │       └── PROJECTNAMEVersion.h.in        # Version template class
     ├── init.sh                                # Init script for creation of a new project
-    ├── LICENSE
+    ├── LICENSE.MIT
     ├── README.md
     ├── src                                    # Source folder is departed from include
     │   ├── BaseClass.cpp                      # A dummy base class

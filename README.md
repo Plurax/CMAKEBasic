@@ -89,7 +89,7 @@ Packaging not yet imlemented/tested.
 # Remarks
 
 Although CMake is also for cross compiling, I dont have tested MSVC support or other platforms. I am using
-this currently on Ubuntu 18.04.01
+this currently on Ubuntu 20.04
 
 # Thanks
 

@@ -20,7 +20,13 @@ rm -rf .git
 echo "Installing catch..."
 mkdir -p $HERE/test/thirdparty/catch
 cd $HERE/test/thirdparty/catch
-wget https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp
+wget https://github.com/catchorg/Catch2/releases/download/v2.13.6/catch.hpp
+if [ $? -ne 0 ]
+then
+  echo "Error when trying to fetch catch2 via wget. Please check catch2 repo to get last header https://github.com/catchorg/Catch2"
+  exit 1
+fi
+
 cd $HERE
 
 echo "# $PROJECT_NAME" > README.md

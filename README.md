@@ -67,7 +67,7 @@ tests will have access to the binaries.
 ```
     mkdir build
     cd build
-    cmake -Dtestproj_BuildTests=ON -Dtestproj_Coverage=ON -Dtestproj_Valgrind=ON ..
+    cmake -DBUILDTESTS=ON -DCOVERAGE=ON -DVALGRIND=ON ..
     make
     make test
     make lcov_html

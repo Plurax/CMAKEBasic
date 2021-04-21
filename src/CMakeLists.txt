@@ -1,7 +1,7 @@
 add_definitions(-D__LIBNAME="PROJECTNAME")
 
 # We need profiling info if tests are activated
-if(BUILD_TESTING AND PROJECTNAME_BuildTests)
+if(BUILD_TESTING AND BUILDTESTS)
     set(CMAKE_CXX_FLAGS "--coverage -g -O0 -fprofile-arcs -ftest-coverage")
 endif()
 
